@@ -7,4 +7,8 @@ import preact from '@astrojs/preact';
 export default defineConfig({
   site: 'https://andreasjohanssonux.netlify.app/',
   integrations: [preact()],
+  i18n: {
+    locales: ['en', 'sv'],
+    defaultLocale: 'sv',
+  },
 });
