@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Portfolio | Andreas Johansson";
+---
+<BaseLayout pageTitle={pageTitle}>
+  <section class="py-12">
+    <h1 class="text-4xl font-bold tracking-tight mb-8">Featured Projects</h1>
+    
+    <div class="grid gap-8 md:grid-cols-2">
+      {/* Project 1 */}
+      <a href="/projects/project-1" class="group">
+        <div class="rounded-lg overflow-hidden border bg-card">
+          <img 
+            src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&q=80"
+            alt="Project 1 thumbnail - UX Design Process" 
+            class="w-full h-64 object-cover transition-transform group-hover:scale-105"
+          />
+          <div class="p-6">
+            <h2 class="text-2xl font-semibold">Project Name 1</h2>
+            <p class="text-muted-foreground mt-2">Brief description of the project and its key achievements. What problems did it solve?</p>
+            <div class="flex gap-2 mt-4">
+              <span class="text-sm bg-secondary px-2 py-1 rounded">UX Research</span>
+              <span class="text-sm bg-secondary px-2 py-1 rounded">UI Design</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      {/* Project 2 */}
+      <a href="/projects/project-2" class="group">
+        <div class="rounded-lg overflow-hidden border bg-card">
+          <img 
+            src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80"
+            alt="Project 2 thumbnail - UI Wireframes" 
+            class="w-full h-64 object-cover transition-transform group-hover:scale-105"
+          />
+          <div class="p-6">
+            <h2 class="text-2xl font-semibold">Project Name 2</h2>
+            <p class="text-muted-foreground mt-2">Brief description of the second project. What was your role and impact?</p>
+            <div class="flex gap-2 mt-4">
+              <span class="text-sm bg-secondary px-2 py-1 rounded">Product Design</span>
+              <span class="text-sm bg-secondary px-2 py-1 rounded">Prototyping</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+</BaseLayout> 

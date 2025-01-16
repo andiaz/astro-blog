@@ -1,9 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting.jsx';
-const pageTitle = "Home Page";
+import Button from '../components/UIButton.astro';
+const pageTitle = "Andreas Johansson | UX Designer";
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <h2>Min h2-rubrik här!</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+  {/* Hero Section */}
+  <section class="py-12 md:py-24">
+    <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
+      UX Designer crafting intuitive digital experiences
+    </h1>
+    <p class="mt-4 text-xl text-muted-foreground">
+      Hi, I'm Andreas. I specialize in user-centered design and creating seamless interactions.
+    </p>
+    <div class="mt-6 flex gap-4">
+      <Button variant="default" size="lg" href="/portfolio">View My Work</Button>
+      <Button variant="outline" size="lg">Contact Me</Button>
+    </div>
+  </section>
+
+  {/* Featured Projects */}
+  <section class="py-12">
+    <h2 class="text-3xl font-semibold mb-8">Featured Projects</h2>
+    <div class="grid gap-8 md:grid-cols-2">
+      {/* Add your project cards here */}
+    </div>
+  </section>
+
+  {/* Process Section */}
+  <section class="py-12 bg-muted/50">
+    <h2 class="text-3xl font-semibold mb-8">My Design Process</h2>
+    <div class="grid gap-6 md:grid-cols-4">
+      <div class="p-4">
+        <h3 class="font-semibold">Research</h3>
+        <p class="text-muted-foreground">Understanding users and their needs</p>
+      </div>
+      {/* Add other process steps */}
+    </div>
+  </section>
 </BaseLayout>

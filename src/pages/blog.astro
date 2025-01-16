@@ -1,17 +1,91 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogPost from '../components/BlogPost.astro';
-const allPosts = await getCollection("blog");
-const pageTitle = "Blog";
+import { getCollection } from 'astro:content';
+
+const pageTitle = "Blog | Andreas Johansson";
+const posts = await getCollection('blog');
+
+// Define main categories with descriptions and icons
+const categories = [
+  {
+    id: 'ux-design',
+    title: 'UX Design',
+    description: 'Insights and best practices in user experience design, from research to implementation.',
+    icon: '🎨',
+    gradient: 'from-[#FF6B6B] to-[#4ECDC4]'
+  },
+  {
+    id: 'music-production',
+    title: 'Music Production',
+    description: 'Tips, techniques, and stories from my journey in electronic music production.',
+    icon: '🎹',
+    gradient: 'from-[#A8E6CF] to-[#3D84A8]'
+  },
+  {
+    id: 'tech',
+    title: 'Technology',
+    description: 'Exploring the latest in web development, AI, and creative technology.',
+    icon: '💻',
+    gradient: 'from-[#6C63FF] to-[#3F3D56]'
+  },
+  {
+    id: 'creativity',
+    title: 'Digital Creativity',
+    description: 'Digital art, design tools, and creative workflows.',
+    icon: '✨',
+    gradient: 'from-[#FFD93D] to-[#FF6B6B]'
+  }
+];
+
+// Count posts per category
+const postCounts = posts.reduce((acc, post) => {
+  post.data.category && (acc[post.data.category] = (acc[post.data.category] || 0) + 1);
+  return acc;
+}, {});
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <p>This is my blog page. I will be posting my thoughts and ideas here.</p>
-	<ul>
-		{allPosts.map((post: any) => (
-			<BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
-		))}
-	</ul>
+  <main class="py-12 container">
+    <section class="mb-16">
+      <h1 class="text-4xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+        Blog Categories
+      </h1>
+      <p class="text-xl text-muted-foreground max-w-2xl">
+        Explore articles about UX design, music production, technology, and creative pursuits.
+      </p>
+    </section>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {categories.map(category => (
+        <a 
+          href={`/${category.id}`}
+          class="group relative overflow-hidden rounded-lg border bg-card p-6 hover:border-primary transition-colors"
+        >
+          <div class="absolute inset-0 bg-gradient-to-r opacity-5 group-hover:opacity-10 transition-opacity {category.gradient}"/>
+          <div class="relative space-y-4">
+            <span class="text-4xl">{category.icon}</span>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <h2 class="text-2xl font-semibold tracking-tight">{category.title}</h2>
+                <span class="text-sm text-muted-foreground">
+                  {postCounts[category.id] || 0} articles
+                </span>
+              </div>
+              <p class="text-muted-foreground">
+                {category.description}
+              </p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </main>
 </BaseLayout>
+
+<style>
+  .sticky {
+    position: sticky;
+    top: 0;
+  }
+</style>
 

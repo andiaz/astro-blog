@@ -1,0 +1,16 @@
+---
+import { Button } from './ui/button';
+
+interface Props {
+  variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
+  size?: 'default' | 'sm' | 'lg' | 'icon';
+  className?: string;
+  href?: string;
+}
+
+const { variant, size, className, href, ...props } = Astro.props;
+---
+
+<Button client:load variant={variant} size={size} className={className} href={href} {...props}>
+  <slot />
+</Button>

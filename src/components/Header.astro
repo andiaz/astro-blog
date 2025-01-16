@@ -1,12 +1,19 @@
 ---
 import Navigation from './Navigation.astro';
-import Hamburger from './Hamburger.astro';
 import ThemeIcon from './ThemeIcon.astro';
 ---
-<header>
-    <nav>
-        <Hamburger />
+<header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="container flex h-16 items-center">
+    <div class="mr-4 flex">
+      <a href="/" class="mr-6 flex items-center space-x-2">
+        <span class="font-bold text-xl">AJ</span>
+      </a>
+    </div>
+    <Navigation />
+    <div class="flex flex-1 items-center justify-end">
+      <nav class="flex items-center">
         <ThemeIcon />
-        <Navigation />
-    </nav>
+      </nav>
+    </div>
+  </div>
 </header>

@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const pageTitle = "Project Name 1 | Portfolio";
+---
+<BaseLayout pageTitle={pageTitle}>
+  <article class="py-12 max-w-3xl mx-auto">
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold tracking-tight mb-4">Project Name 1</h1>
+      <div class="flex gap-4 text-muted-foreground">
+        <span>Duration: 3 months</span>
+        <span>Role: Lead Designer</span>
+        <span>Year: 2023</span>
+      </div>
+    </header>
+
+    <img 
+      src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200&q=80"
+      alt="Project 1 hero image" 
+      class="w-full rounded-lg mb-12"
+    />
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Overview</h2>
+      <p>Detailed description of the project, its goals, and the problem it solved.</p>
+
+      <h2>The Challenge</h2>
+      <p>What problems were you trying to solve? What constraints did you face?</p>
+
+      <h2>Process & Solution</h2>
+      <p>How did you approach the problem? What methods did you use?</p>
+
+      <div class="grid grid-cols-2 gap-4 my-8">
+        <img 
+          src="https://images.unsplash.com/photo-1554200876-56c2f25224fa?w=600&q=80"
+          alt="Process image 1" 
+          class="rounded-lg"
+        />
+        <img 
+          src="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?w=600&q=80"
+          alt="Process image 2" 
+          class="rounded-lg"
+        />
+      </div>
+
+      <h2>Results & Impact</h2>
+      <p>What were the outcomes? How did you measure success?</p>
+    </div>
+  </article>
+</BaseLayout> 

@@ -1,15 +1,78 @@
 ---
 import Social from './Social.astro';
+
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { platform: 'github', username: 'andiaz' },
+  { platform: 'linkedin', username: 'in/andreasjohanssonux' },
+  { platform: 'spotify', username: '55YUCQ9mWZ8ziRIS5Hmg3q' }
+];
+
+const footerLinks = [
+  {
+    title: 'Links',
+    items: [
+      { title: 'Home', href: '/' },
+      { title: 'Portfolio', href: '/portfolio' },
+      { title: 'About', href: '/about' },
+      { title: 'Blog', href: '/blog' },
+    ]
+  },
+  {
+    title: 'Social',
+    items: [
+      { title: 'GitHub', href: 'https://github.com/andiaz' },
+      { title: 'LinkedIn', href: 'https://linkedin.com/in/andreasjohanssonux' },
+    ]
+  }
+];
 ---
 
-<style>
-    footer {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-  </style>
-<footer>
-    <Social platform="github" username="andiaz" />
-    <Social platform="linkedin" username="in/andreasjohanssonux" />
+<footer class="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="container flex flex-col gap-8 py-8 md:py-12">
+    <div class="flex flex-col gap-6 md:flex-row md:justify-between">
+      <div class="space-y-4">
+        <div class="flex items-center space-x-2">
+          <span class="font-bold text-xl">AJ</span>
+        </div>
+        <div class="text-muted-foreground max-w-sm">
+          UX Designer crafting intuitive digital experiences. Based in Sweden, working worldwide.
+        </div>
+      </div>
+
+      {/* Quick Links */}
+      <div class="grid grid-cols-2 gap-8 sm:grid-cols-3">
+        {footerLinks.map((section) => (
+          <div class="space-y-3">
+            <h4 class="text-sm font-medium">{section.title}</h4>
+            <ul class="space-y-2">
+              {section.items.map((link) => (
+                <li>
+                  <a 
+                    href={link.href}
+                    class="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Bottom Section */}
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-t pt-8">
+      <div class="text-sm text-muted-foreground">
+        © {currentYear} Andreas Johansson. All rights reserved.
+      </div>
+      <div class="flex items-center gap-4">
+        {socialLinks.map(({ platform, username }) => (
+          <Social platform={platform} username={username} />
+        ))}
+      </div>
+    </div>
+  </div>
 </footer>
