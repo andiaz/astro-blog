@@ -8,6 +8,7 @@ image:
   alt: 'UX Research illustration'
 category: 'ux-design'
 tags: ['ux research', 'user testing', 'design']
+slug: my-custom-id
 ---
 
 Understanding your users is crucial for creating effective designs. Let's explore the fundamental methods of UX research.

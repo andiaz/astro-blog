@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import BlogPost from '../components/BlogPost.astro';
 
 export async function getStaticPaths() {
   const validCategories = [
@@ -20,7 +21,6 @@ const allPosts = await getCollection('blog');
 
 // Debug logs
 console.log('Current category:', category);
-console.log('Available posts:', allPosts);
 
 const categoryPosts = allPosts.filter(post => {
   console.log('Post data:', post.data);
@@ -52,24 +52,24 @@ const categoryDetails = {
 }[category];
 ---
 
-<BaseLayout pageTitle={`${categoryDetails.title} | Blog`}>
+<BaseLayout pageTitle={`${categoryDetails?.title} | Blog`}>
   <main class="py-12 container">
     <section class="mb-16">
       <a href="/blog" class="text-sm text-muted-foreground hover:text-foreground mb-4 inline-block">
         ← Back to categories
       </a>
       <h1 class="text-4xl font-bold tracking-tight mb-4">
-        {categoryDetails.title}
+        {categoryDetails?.title}
       </h1>
       <p class="text-xl text-muted-foreground">
-        {categoryDetails.description}
+        {categoryDetails?.description}
       </p>
     </section>
 
     <div class="space-y-8">
       {sortedPosts.map(post => (
         <article class="group">
-          <a href={`/posts/${post.slug}`} class="block space-y-3 hover:bg-secondary/20 p-4 -mx-4 rounded-lg transition-colors">
+          <a href={`/posts/${post.id}`} class="block space-y-3 hover:bg-secondary/20 p-4 -mx-4 rounded-lg transition-colors">
             <div class="flex items-center gap-4 text-sm text-muted-foreground">
               <time datetime={post.data.pubDate.toISOString()}>
                 {new Date(post.data.pubDate).toLocaleDateString('en-US', {

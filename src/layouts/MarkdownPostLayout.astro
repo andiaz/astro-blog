@@ -2,37 +2,39 @@
 import BaseLayout from './BaseLayout.astro';
 const { frontmatter } = Astro.props;
 ---
-<meta charset="utf-8">
+<!-- Start of Selection -->
 <BaseLayout pageTitle={frontmatter.title}>
-    <p>{frontmatter.pubDate.toLocaleDateString()}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by: {frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    <div class="py-8 max-w-3xl mx-auto">
+        <p class="text-muted-foreground text-sm">{frontmatter.pubDate.toLocaleDateString()}</p>
+        <h1 class="text-3xl font-bold mb-2">{frontmatter.title}</h1>
+        <p class="text-lg italic mb-4">{frontmatter.description}</p>
+        <p class="text-muted-foreground">Written by: <strong>{frontmatter.author}</strong></p>
+        <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="w-full max-w-xs rounded-lg shadow-md mb-4" />
 
-    <div class="tags">
-        {frontmatter.tags.map((tag: string) => (
-          <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-        ))}
-      </div>
+        <div class="flex flex-wrap gap-2 my-4">
+            {frontmatter.tags.map((tag: string) => (
+                <span class="tag bg-muted border border-dotted border-gray-300 rounded-md px-3 py-1 text-sm">
+                    <a href={`/tags/${tag}`} class="text-blue-600 hover:underline">{tag}</a>
+                </span>
+            ))}
+        </div>
+
+        <div class="prose prose-lg mt-6">
+            <h2>Introduction</h2>
+            <p>This article explores the key concepts and insights related to {frontmatter.title}. We will delve into the main topics and provide practical examples to enhance your understanding.</p>
+
+            <h2>Key Takeaways</h2>
+            <ul>
+                <li>Understanding the fundamentals of {frontmatter.title}.</li>
+                <li>Exploring real-world applications and case studies.</li>
+                <li>Tips and best practices for implementation.</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>In conclusion, {frontmatter.title} is an essential topic for anyone looking to deepen their knowledge and skills in this area. We hope this article provides valuable insights and encourages further exploration.</p>
+        </div>
+    </div>
 
     <slot />
 </BaseLayout>
-<style>
-    a {
-      color: #00539F;
-    }
-  
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  
-    .tag {
-      margin: 0.25em;
-      border: dotted 1px #a1a1a1;
-      border-radius: .5em;
-      padding: .5em 1em;
-      font-size: 1.15em;
-      background-color: #F8FCFD;
-    }
-  </style>
+<!-- End of Selection -->

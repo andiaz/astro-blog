@@ -37,11 +37,7 @@ const categories = [
   }
 ];
 
-// Count posts per category
-const postCounts = posts.reduce((acc, post) => {
-  post.data.category && (acc[post.data.category] = (acc[post.data.category] || 0) + 1);
-  return acc;
-}, {});
+
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -68,7 +64,7 @@ const postCounts = posts.reduce((acc, post) => {
               <div class="flex items-center justify-between">
                 <h2 class="text-2xl font-semibold tracking-tight">{category.title}</h2>
                 <span class="text-sm text-muted-foreground">
-                  {postCounts[category.id] || 0} articles
+                  # articles
                 </span>
               </div>
               <p class="text-muted-foreground">
