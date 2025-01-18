@@ -3,6 +3,8 @@ import Social from './Social.astro';
 
 const currentYear = new Date().getFullYear();
 
+var weekDay = new Date().toLocaleTimeString('en-us', { weekday: 'long' }).split(' ')[0];
+
 const socialLinks = [
   { platform: 'github', username: 'andiaz' },
   { platform: 'linkedin', username: 'in/andreasjohanssonux' },
@@ -38,6 +40,7 @@ const footerLinks = [
         </div>
         <div class="text-muted-foreground max-w-sm">
           UX Designer crafting intuitive digital experiences. Based in Sweden, working worldwide.
+          <br />Have a great {weekDay}!
         </div>
       </div>
 
