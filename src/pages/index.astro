@@ -2,8 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/UIButton.astro';
 import PortfolioList from '../components/PortfolioList.astro';
+import { getCollection } from 'astro:content';
+
 const pageTitle = "Andreas Johansson | UX Designer";
 
+const creativityPosts = await getCollection('creativity');
+const techPosts = await getCollection('tech');
+const musicProductionPosts = await getCollection('musicProduction');
+const uxDesignPosts = await getCollection('uxDesign');
 
 // Define main categories with descriptions and icons
 const categories = [
@@ -12,30 +18,35 @@ const categories = [
     title: 'UX Design',
     description: 'Insights and best practices in user experience design, from research to implementation.',
     icon: '🎨',
-    gradient: 'from-[#FF6B6B] to-[#4ECDC4]'
+    gradient: 'from-[#FF6B6B] to-[#4ECDC4]',
+    length: uxDesignPosts.length,
   },
   {
     id: 'music-production',
     title: 'Music Production',
     description: 'Tips, techniques, and stories from my journey in electronic music production.',
     icon: '🎹',
-    gradient: 'from-[#A8E6CF] to-[#3D84A8]'
+    gradient: 'from-[#A8E6CF] to-[#3D84A8]',
+    length: musicProductionPosts.length,
   },
   {
     id: 'tech',
     title: 'Technology',
     description: 'Exploring the latest in web development, AI, and creative technology.',
     icon: '💻',
-    gradient: 'from-[#6C63FF] to-[#3F3D56]'
+    gradient: 'from-[#6C63FF] to-[#3F3D56]',
+    length: techPosts.length,
   },
   {
     id: 'creativity',
     title: 'Digital Creativity',
     description: 'Digital art, design tools, and creative workflows.',
     icon: '✨',
-    gradient: 'from-[#FFD93D] to-[#FF6B6B]'
+    gradient: 'from-[#FFD93D] to-[#FF6B6B]',
+    length: creativityPosts.length,
   }
 ];
+
 ---
 <BaseLayout pageTitle={pageTitle}>
   {/* Hero Section */}
@@ -76,7 +87,7 @@ const categories = [
               <div class="flex items-center justify-between">
                 <h2 class="text-2xl font-semibold tracking-tight">{category.title}</h2>
                 <span class="text-sm text-muted-foreground">
-                  # articles
+                  {category.length} articles
                 </span>
               </div>
               <p class="text-muted-foreground">

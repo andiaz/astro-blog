@@ -1,11 +1,13 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 const { frontmatter } = Astro.props;
+const date = frontmatter.pubDate.toString().slice(0,10);
+const formattedDate = new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <!-- Start of Selection -->
 <BaseLayout pageTitle={frontmatter.title}>
     <div class="py-8 max-w-3xl mx-auto">
-        <p class="text-muted-foreground text-sm">{frontmatter.pubDate}</p>
+        <p class="text-muted-foreground text-sm">{formattedDate}</p>
         <h1 class="text-3xl font-bold mb-2">{frontmatter.title}</h1>
         <p class="text-lg italic mb-4">{frontmatter.description}</p>
         <p class="text-muted-foreground">Written by: <strong>{frontmatter.author}</strong></p>
