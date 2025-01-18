@@ -1,7 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/UIButton.astro';
+import PortfolioList from '../components/PortfolioList.astro';
 const pageTitle = "Andreas Johansson | UX Designer";
+
+
+// Define main categories with descriptions and icons
+const categories = [
+  {
+    id: 'ux-design',
+    title: 'UX Design',
+    description: 'Insights and best practices in user experience design, from research to implementation.',
+    icon: '🎨',
+    gradient: 'from-[#FF6B6B] to-[#4ECDC4]'
+  },
+  {
+    id: 'music-production',
+    title: 'Music Production',
+    description: 'Tips, techniques, and stories from my journey in electronic music production.',
+    icon: '🎹',
+    gradient: 'from-[#A8E6CF] to-[#3D84A8]'
+  },
+  {
+    id: 'tech',
+    title: 'Technology',
+    description: 'Exploring the latest in web development, AI, and creative technology.',
+    icon: '💻',
+    gradient: 'from-[#6C63FF] to-[#3F3D56]'
+  },
+  {
+    id: 'creativity',
+    title: 'Digital Creativity',
+    description: 'Digital art, design tools, and creative workflows.',
+    icon: '✨',
+    gradient: 'from-[#FFD93D] to-[#FF6B6B]'
+  }
+];
 ---
 <BaseLayout pageTitle={pageTitle}>
   {/* Hero Section */}
@@ -14,27 +48,75 @@ const pageTitle = "Andreas Johansson | UX Designer";
     </p>
     <div class="mt-6 flex gap-4">
       <Button variant="default" size="lg" href="/portfolio">View My Work</Button>
-      <Button variant="outline" size="lg">Contact Me</Button>
+      <Button variant="outline" size="lg" href="https://www.linkedin.com/in/andreasjohanssonux/" target="_blank">
+        Contact Me 
+      </Button>
+    </div>
+  </section>
+  <section class="py-12">
+    <section class="mb-16">
+      <h2 class="text-4xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+        Categories
+      </h2>
+      <p class="text-xl text-muted-foreground max-w-3xl">
+        Explore articles about UX design, music production, technology, and creative pursuits.
+      </p>
+    </section>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {categories.map(category => (
+        <a 
+          href={`/${category.id}`}
+          class="group relative overflow-hidden rounded-lg border bg-card p-6 hover:border-primary transition-colors"
+        >
+          <div class="absolute inset-0 bg-gradient-to-r opacity-5 group-hover:opacity-10 transition-opacity {category.gradient}"/>
+          <div class="relative space-y-4">
+            <span class="text-4xl">{category.icon}</span>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <h2 class="text-2xl font-semibold tracking-tight">{category.title}</h2>
+                <span class="text-sm text-muted-foreground">
+                  # articles
+                </span>
+              </div>
+              <p class="text-muted-foreground">
+                {category.description}
+              </p>
+            </div>
+          </div>
+        </a>
+      ))}
     </div>
   </section>
 
   {/* Featured Projects */}
   <section class="py-12">
     <h2 class="text-3xl font-semibold mb-8">Featured Projects</h2>
-    <div class="grid gap-8 md:grid-cols-2">
-      {/* Add your project cards here */}
-    </div>
+    <PortfolioList />
   </section>
 
   {/* Process Section */}
-  <section class="py-12 bg-muted/50">
+  <section class="py-12" >
     <h2 class="text-3xl font-semibold mb-8">My Design Process</h2>
-    <div class="grid gap-6 md:grid-cols-4">
-      <div class="p-4">
-        <h3 class="font-semibold">Research</h3>
-        <p class="text-muted-foreground">Understanding users and their needs</p>
+    <div class="relative bg-muted/50 p-6"">
+      <div class="grid gap-12 md:grid-cols-4">
+        <div class="relative p-4">
+          <h3 class="font-semibold text-center">1. Research</h3>
+          <p class="text-muted-foreground text-center">Understanding users and their needs</p>
+        </div>
+        <div class="relative p-4">
+          <h3 class="font-semibold text-center">2. Ideation</h3>
+          <p class="text-muted-foreground text-center">Generating creative ideas and solutions</p>
+        </div>
+        <div class="relative p-4">
+          <h3 class="font-semibold text-center">3. Prototyping</h3>
+          <p class="text-muted-foreground text-center">Creating low-fidelity and high-fidelity prototypes</p>
+        </div>
+        <div class="relative p-4">
+          <h3 class="font-semibold text-center">4. Testing</h3>
+          <p class="text-muted-foreground text-center">Gathering feedback to refine designs</p>
+        </div>
       </div>
-      {/* Add other process steps */}
     </div>
   </section>
 </BaseLayout>

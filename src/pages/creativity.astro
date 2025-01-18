@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Creativity";
+import { getCollection } from 'astro:content';
+import BlogPost from '../components/BlogPost.astro';
+const posts = await getCollection('creativity');
+---
+<BaseLayout pageTitle={pageTitle}>
+  <section class="py-12">
+    <p>A list of all creativity posts below:</p>
+    
+    {posts.map(post => (
+      <BlogPost url={`/creativity/${post.data.slug}`} title={post.data.title} />
+    ))}
+  </section>
+</BaseLayout> 

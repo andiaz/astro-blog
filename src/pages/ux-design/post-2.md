@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/MarkdownPostLayout.astro
 title: 'UX Research Fundamentals'
 pubDate: 2022-07-08
 description: 'Essential methods and practices for conducting effective UX research.'
@@ -8,7 +9,7 @@ image:
   alt: 'UX Research illustration'
 category: 'ux-design'
 tags: ['ux research', 'user testing', 'design']
-slug: my-custom-id
+slug: post-2
 ---
 
 Understanding your users is crucial for creating effective designs. Let's explore the fundamental methods of UX research.

@@ -4,7 +4,7 @@ import BlogPost from '../../components/BlogPost.astro';
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
+  const blogEntries = await getCollection('creativity');
   return blogEntries.map(entry => ({
     params: { slug: entry.id },
     props: { entry },
