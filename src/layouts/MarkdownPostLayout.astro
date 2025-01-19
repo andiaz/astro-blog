@@ -12,7 +12,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-GB', { day: 'numeric
         <h1 class="text-3xl font-bold mb-2">{frontmatter.title}</h1>
         <p class="text-lg italic mb-4">{frontmatter.description}</p>
         <p class="text-muted-foreground">Written by: <strong>{frontmatter.author}</strong></p>
-        <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="w-full max-w-xs rounded-lg shadow-md mb-4" />
+        <img src={frontmatter.image?.url} alt={frontmatter.image?.alt} class="w-full max-w-xs rounded-lg shadow-md mb-4" />
 
 
         <div class="prose prose-lg mt-6">

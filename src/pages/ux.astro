@@ -1,16 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "Tech";
+const pageTitle = "UX design";
 import { getCollection } from 'astro:content';
 import BlogPost from '../components/BlogPost.astro';
-const posts = await getCollection('tech');
+const posts = await getCollection('ux');
 ---
 <BaseLayout pageTitle={pageTitle}>
   <section class="py-12">
-    <p>A list of all tech posts below:</p>
+    <p>A list of all UX-related posts below:</p>
     
     {posts.map(post => (
-      <BlogPost url={`/tech/${post.data.slug}`} title={post.data.title} />
+      <BlogPost url={`/ux/${post.data.slug}`} title={post.data.title} />
     ))}
   </section>
 </BaseLayout> 

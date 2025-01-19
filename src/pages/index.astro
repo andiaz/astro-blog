@@ -3,25 +3,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/UIButton.astro';
 import PortfolioList from '../components/PortfolioList.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import profileImage from '../images/andreas-2.jpeg';
 
-const pageTitle = "Andreas Johansson | UX Designer";
 
-const creativityPosts = await getCollection('creativity');
-const techPosts = await getCollection('tech');
-const musicProductionPosts = await getCollection('musicProduction');
-const uxDesignPosts = await getCollection('uxDesign');
+const pageTitle = "Andreas Johansson";
+
+const uxDesignPosts = await getCollection('ux');
+const aiPosts = await getCollection('ai');
 
 // Define main categories with descriptions and icons
 const categories = [
   {
+    id: 'ai',
+    title: 'AI',
+    description: 'Exploring the latest in AI - tools, techniques and insights.',
+    icon: '🤖',
+    gradient: 'from-[#FF6B6B] to-[#4ECDC4]',
+    length: aiPosts.length,
+  },
+  {
     id: 'ux-design',
-    title: 'UX Design',
-    description: 'Insights and best practices in user experience design, from research to implementation.',
+    title: 'UX',
+    description: 'Insights and best practices in user experience design - from research to implementation.',
     icon: '🎨',
     gradient: 'from-[#FF6B6B] to-[#4ECDC4]',
     length: uxDesignPosts.length,
   },
-  {
+
+ /*  {
     id: 'music-production',
     title: 'Music Production',
     description: 'Tips, techniques, and stories from my journey in electronic music production.',
@@ -44,7 +54,7 @@ const categories = [
     icon: '✨',
     gradient: 'from-[#FFD93D] to-[#FF6B6B]',
     length: creativityPosts.length,
-  }
+  } */
 ];
 
 ---
@@ -54,15 +64,20 @@ const categories = [
     <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
       UX Designer crafting intuitive digital experiences
     </h1>
-    <p class="mt-4 text-xl text-muted-foreground">
-      Hi, I'm Andreas. I specialize in user-centered design and creating seamless interactions.
-    </p>
+    <div class="flex items-center mt-4 text-xl text-muted-foreground">
+      <Image src={profileImage} alt="Andreas' Avatar" class="w-20 h-20 rounded-full mr-4" />
+      <p>
+        Hi, I'm Andreas. I specialize in user-centered design and creating seamless interactions.
+      </p>
+    </div>
+    <!--
     <div class="mt-6 flex gap-4">
       <Button variant="default" size="lg" href="/portfolio">View My Work</Button>
       <Button variant="outline" size="lg" href="https://www.linkedin.com/in/andreasjohanssonux/" target="_blank">
         Contact Me 
       </Button>
     </div>
+    -->
   </section>
   <section class="py-12">
     <section class="mb-16">
@@ -100,12 +115,12 @@ const categories = [
     </div>
   </section>
 
- 
+ <!--
   <section class="py-12">
     <h2 class="text-3xl font-semibold mb-8">Featured Projects</h2>
     <PortfolioList />
   </section>
-
+-->
  
   <section class="py-12">
     <h2 class="text-3xl font-semibold mb-8">My Design Process</h2>

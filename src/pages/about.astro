@@ -1,17 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "About Me | Andreas Johansson";
+const pageTitle = "About Me";
 
 const skills = [
-  { name: "UX/UI Design", tools: ["Figma", "Sketch", "Adobe XD"] },
-  { name: "Visual Design", tools: ["Photoshop", "Illustrator"] },
-  { name: "Development", tools: ["HTML/CSS", "JavaScript", "React"] },
-  { name: "Music Production", tools: ["FL Studio", "Ableton Live", "Pro Tools"] },
+  { name: "Skills", tools: ["User research", "UX strategy", "Information architecture", "Concept", "Design", "Prototyping", "Responsive design"] },
+  { name: "Tools", tools: ["Figma", "Adobe XD", "Zeplin"] },
+  { name: "Development", tools: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Git"] },
 ];
 
 const interests = [
   "Digital Art & Illustration",
-  "Music Production",
+  "Electronic Music Production",
   "Technology & AI",
   "Gaming",
   "Fantasy & Sci-fi",
@@ -55,13 +54,13 @@ import profileImage from '../images/andreas-2.jpeg';
       <div class="grid gap-12 md:grid-cols-2">
         <div class="space-y-6">
           <h2 class="text-3xl font-semibold tracking-tight border-b pb-2">My Journey</h2>
-          <div class="prose prose-lg">
+          <div class="opacity-60">
             <p>
               My journey in web development began around 2000. What started with simple HTML pages in Dreamweaver 
               evolved into complex applications with PHP & MySQL. This natural progression from basic tools to 
               more sophisticated technologies shaped my understanding of how technology can enhance user experiences.
             </p>
-            <p>
+            <p class="mt-4">
               Today, I channel this experience into creating intuitive digital solutions, always staying curious 
               about new technologies and creative possibilities.
             </p>
@@ -69,13 +68,13 @@ import profileImage from '../images/andreas-2.jpeg';
         </div>
         <div class="space-y-6">
           <h2 class="text-3xl font-semibold tracking-tight border-b pb-2">Beyond Work</h2>
-          <div class="prose prose-lg">
+          <div class="opacity-60">
             <p>
               When I'm not designing user experiences, you'll find me producing music (check out my tracks on Spotify 
               as "Andreas J"), creating digital art, or exploring new technologies. I'm particularly fascinated by AI 
               and its creative applications.
             </p>
-            <p>
+            <p class="mt-4">
               I live in Karlskrona with my wonderful wife Susanna, who means everything to me. Together, we've 
               explored places from the plains of Mongolia to beyond.
             </p>
@@ -90,15 +89,15 @@ import profileImage from '../images/andreas-2.jpeg';
       <div class="relative">
         <h2 class="text-3xl font-semibold tracking-tight border-b pb-2 mb-8">Music Production</h2>
         <div class="grid gap-8 md:grid-cols-2">
-          <div class="prose prose-lg">
+          <div>
             <p class="text-xl font-medium mb-4">
               Producer of Melodic Progressive House & Trance
             </p>
-            <p>
+            <p class="opacity-60">
               My music journey began in 2012 with FL Studio, diving deep into the world of electronic music production. 
               I've focused on progressive house and trance, the genres that first captured my imagination in electronic music.
             </p>
-            <p>
+            <p class="opacity-60 mt-4">
               Over the years, I've had the privilege of working with various record labels, each collaboration adding 
               to my growth as a producer.
             </p>
@@ -163,14 +162,14 @@ import profileImage from '../images/andreas-2.jpeg';
     </section>
 
     {/* Personal Note */}
-    <section class="prose prose-lg max-w-none">
+    <section class="max-w-none">
       <h2 class="text-3xl font-semibold tracking-tight border-b pb-2 mb-6 non-prose">Why This Site Exists</h2>
-      <p>
+      <p class="opacity-60">
         This site is my creative playground where I share my experiences and insights about UX design, 
         creative technology, and digital creation. While I write primarily for the joy of creative expression, 
         I'm always thrilled when others find value in my content.
       </p>
-      <p>
+      <p class="opacity-60 mt-4">
         All content here represents my personal views and experiences, carefully crafted to be as reliable 
         and fact-based as possible. If you spot anything that needs correction, please don't hesitate to reach out.
       </p>

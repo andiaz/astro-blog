@@ -3,8 +3,8 @@ import { glob } from 'astro/loaders';
 // Import utilities from `astro:content`
 import { z, defineCollection } from 'astro:content';
 // Define a `loader` and `schema` for each collection
-const creativity = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/pages/creativity' }),
+const ai = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/pages/ai' }),
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
@@ -22,46 +22,8 @@ const creativity = defineCollection({
   }),
 });
 
-const musicProduction = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/pages/music-production' }),
-  schema: z.object({
-    title: z.string(),
-    pubDate: z.date(),
-    description: z.string(),
-    author: z.string(),
-    image: z
-      .object({
-        url: z.string(),
-        alt: z.string(),
-      })
-      .optional(),
-    tags: z.array(z.string()).optional(),
-    category: z.string(),
-    slug: z.string(),
-  }),
-});
-
-const tech = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/pages/tech' }),
-  schema: z.object({
-    title: z.string(),
-    pubDate: z.date(),
-    description: z.string(),
-    author: z.string(),
-    image: z
-      .object({
-        url: z.string(),
-        alt: z.string(),
-      })
-      .optional(),
-    tags: z.array(z.string()).optional(),
-    category: z.string(),
-    slug: z.string(),
-  }),
-});
-
-const uxDesign = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/pages/ux-design' }),
+const ux = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/pages/ux' }),
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
@@ -80,4 +42,4 @@ const uxDesign = defineCollection({
 });
 
 // Export a `collections` object to register your collection(s)
-export const collections = { creativity, musicProduction, tech, uxDesign };
+export const collections = { ai, ux };
