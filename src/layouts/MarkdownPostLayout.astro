@@ -17,7 +17,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-GB', { day: 'numeric
                     <span class="mx-2">/</span>
                 </li>
                 <li>
-                    <a href="/ux" class="hover:underline">{frontmatter.category}</a>
+                    <a href={`/${frontmatter.category.toLowerCase()}`} class="hover:underline">{frontmatter.category}</a>
                 </li>
             </ol>
         </nav>
