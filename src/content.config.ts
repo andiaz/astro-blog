@@ -4,7 +4,7 @@ import { glob } from 'astro/loaders';
 import { z, defineCollection } from 'astro:content';
 // Define a `loader` and `schema` for each collection
 const ai = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/pages/ai' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/pages/ai' }),
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
@@ -23,7 +23,7 @@ const ai = defineCollection({
 });
 
 const ux = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/pages/ux' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/pages/ux' }),
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
