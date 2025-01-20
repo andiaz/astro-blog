@@ -4,7 +4,7 @@ title: 'ChatGPT: A Powerful Text Generation Tool'
 pubDate: 2025-01-19
 description: 'Exploring the capabilities of ChatGPT in generating text based on prompts.'
 author: 'Andreas Johansson'
-category: 'ai'
+category: 'AI'
 slug: chatgpt
 ---
 

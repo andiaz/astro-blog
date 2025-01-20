@@ -4,7 +4,7 @@ title: 'Disco Diffusion: A Local Tool for Image Generation'
 pubDate: 2025-01-19
 description: 'Discover how Disco Diffusion allows you to generate stunning images locally on your computer.'
 author: 'Andreas Johansson'
-category: 'ai'
+category: 'AI'
 slug: 'disco-diffusion'
 ---
 

@@ -4,7 +4,7 @@ title: 'A/B Testing in UX Design'
 pubDate: 2025-01-19
 description: 'A guide to A/B testing for optimizing user experience.'
 author: 'Andreas Johansson'
-category: 'ux'
+category: 'UX'
 tags: ['a/b testing', 'user testing', 'method']
 slug: ab-testing
 ---

@@ -4,7 +4,7 @@ title: 'Analytics'
 pubDate: 2025-01-19
 description: 'Leveraging analytics to enhance UX research and design decisions.'
 author: 'Andreas Johansson'
-category: 'ux'
+category: 'UX'
 tags: ['analytics', 'user testing', 'tools']
 slug: analytics
 ---
