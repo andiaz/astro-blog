@@ -90,3 +90,14 @@ html.dark {
 .dark .nav-links a {
   color: #fff;
 }
+
+/* If you don't have this file, add it to your styles and import it in your layout */
+a[href^='/'] {
+  color: #0066cc;
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+}
+
+a[href^='/']:hover {
+  border-bottom-style: solid;
+}

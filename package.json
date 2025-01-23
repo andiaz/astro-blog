@@ -23,7 +23,8 @@
     "lucide-react": "^0.471.1",
     "preact": "^10.25.4",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^5.1.4",
