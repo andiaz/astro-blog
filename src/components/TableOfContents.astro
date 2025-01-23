@@ -1,0 +1,117 @@
+---
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+  isMobile?: boolean;
+}
+
+const { headings, isMobile = false } = Astro.props;
+const toc = headings.filter((heading) => heading.depth === 2);
+
+// Don't render if there are no H2 headings
+if (toc.length === 0) return null;
+---
+
+<nav class={`toc ${isMobile ? 'lg:hidden mb-8' : 'hidden lg:block'}`}>
+  <div class={isMobile ? 'my-4 bg-muted/50 rounded-lg p-4' : ''}>
+    <h2 class="text-sm font-semibold mb-4">Table of Contents</h2>
+    <ul class={`space-y-3 text-sm ${isMobile ? 'border-l border-muted-foreground/20' : ''}`}>
+      {
+        toc.map((heading) => (
+          <li>
+            <a
+              href={`#${heading.slug}`}
+              class={`
+                text-muted-foreground hover:text-foreground transition-colors
+                data-[active=true]:text-foreground data-[active=true]:font-medium
+                ${isMobile ? 'block pl-3 py-1 hover:border-l-2 hover:border-primary hover:pl-[11px]' : ''}
+              `}
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // Highlight active section while scrolling
+  const observerOptions = {
+    root: null,
+    // Adjust rootMargin to match scroll-padding-top
+    rootMargin: '-100px 0px -50% 0px',
+    threshold: [0, 1.0]
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute('id');
+      if (id) {
+        const tocLinks = document.querySelectorAll(`a[href="#${id}"]`);
+        tocLinks.forEach(tocLink => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 1) {
+            document.querySelectorAll('.toc a').forEach((link) => {
+              link.setAttribute('data-active', 'false');
+            });
+            tocLink.setAttribute('data-active', 'true');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  // Set initial active state to first heading when page loads
+  window.addEventListener('load', () => {
+    const firstHeading = document.querySelector('h2');
+    if (firstHeading) {
+      const id = firstHeading.getAttribute('id');
+      if (id) {
+        const firstLink = document.querySelector(`a[href="#${id}"]`);
+        firstLink?.setAttribute('data-active', 'true');
+      }
+    }
+  });
+
+  // Track all h2 headings
+  document.querySelectorAll('h2').forEach((heading) => {
+    observer.observe(heading);
+  });
+
+  // Update smooth scrolling to account for offset
+  document.querySelectorAll('.toc a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = link.getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          const offset = 100; // Match scroll-padding-top value
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          
+          // Update URL without jumping
+          window.history.pushState(null, '', href);
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .toc {
+    width: 180px;
+    margin-left: 1rem;
+  }
+
+  /* Reset margin for mobile */
+  .lg\:hidden.toc {
+    width: 100%;
+    margin-left: 0;
+  }
+</style> 

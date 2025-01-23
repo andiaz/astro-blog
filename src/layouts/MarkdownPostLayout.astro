@@ -1,38 +1,55 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Prose from '../components/Prose.astro';
-const { frontmatter } = Astro.props;
+import TableOfContents from '../components/TableOfContents.astro';
+
+const { frontmatter, headings } = Astro.props;
 const date = frontmatter.pubDate.toString().slice(0,10);
 const formattedDate = new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<!-- Start of Selection -->
+
 <BaseLayout>
-    <div class="py-8 max-w-3xl mx-auto">
-        <nav class="mb-4">
-            <ol class="list-reset flex text-muted-foreground text-sm">
-                <li>
-                    <a href="/" class="hover:underline">Home</a>
-                </li>
-                <li>
-                    <span class="mx-2">/</span>
-                </li>
-                <li>
-                    <a href={`/${frontmatter.category.toLowerCase()}`} class="hover:underline">{frontmatter.category}</a>
-                </li>
-            </ol>
-        </nav>
-        <p class="text-muted-foreground text-sm">{formattedDate}</p>
-        <h1 class="text-3xl font-bold mb-2">{frontmatter.title}</h1>
-        <p class="text-lg italic mb-4">{frontmatter.description}</p>
-        <p class="text-muted-foreground">Written by: <strong>{frontmatter.author}</strong></p>
-        <img src={frontmatter.image?.url} alt={frontmatter.image?.alt} class="w-full max-w-xs rounded-lg shadow-md mb-4" />
+    <div class="py-8 max-w-[90rem] mx-auto px-4">
+        <div class="flex flex-col lg:flex-row justify-center gap-8">
+            {/* Main Content */}
+            <div class="flex-1 max-w-3xl">
+                <nav class="mb-4">
+                    <ol class="list-reset flex text-muted-foreground text-sm">
+                        <li>
+                            <a href="/" class="hover:underline">Home</a>
+                        </li>
+                        <li>
+                            <span class="mx-2">/</span>
+                        </li>
+                        <li>
+                            <a href={`/${frontmatter.category.toLowerCase()}`} class="hover:underline">{frontmatter.category}</a>
+                        </li>
+                    </ol>
+                </nav>
+                <p class="text-muted-foreground text-sm">{formattedDate}</p>
+                <h1 class="text-3xl font-bold mb-2">{frontmatter.title}</h1>
+                <p class="text-lg italic mb-4">{frontmatter.description}</p>
+                <p class="text-muted-foreground">Written by: <strong>{frontmatter.author}</strong></p>
+                {frontmatter.image?.url && (
+                    <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="w-full max-w-xs rounded-lg shadow-md mb-4" />
+                )}
 
+                {/* Mobile ToC */}
+                <TableOfContents headings={headings} isMobile={true} />
 
-        <div class="prose prose-lg mt-6">
-          <Prose>
-            <slot />
-          </Prose>
-          </div>
+                <div class="prose prose-lg mt-6">
+                    <Prose>
+                        <slot />
+                    </Prose>
+                </div>
+            </div>
+
+            {/* Desktop ToC Sidebar */}
+            <div class="hidden lg:block relative" style="width: 180px;">
+                <div class="sticky top-20">
+                    <TableOfContents headings={headings} />
+                </div>
+            </div>
+        </div>
     </div>
 </BaseLayout>
-<!-- End of Selection -->
