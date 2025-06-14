@@ -1,49 +1,251 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const pageTitle = "Project Name 1 | Portfolio";
+import H2WithSubtitle from '../../components/H2WithSubtitle.astro';
+const pageTitle = '';
 ---
+
 <BaseLayout pageTitle={pageTitle}>
   <article class="py-12 max-w-3xl mx-auto">
     <header class="mb-12">
-      <h2 class="text-4xl font-bold tracking-tight mb-4">Project Name 1</h2>
+      <h2 class="text-4xl font-bold tracking-tight mb-4">
+        Thellio: New UI Design and Component Library
+      </h2>
       <div class="flex gap-4 text-muted-foreground">
-        <span>Duration: 3 months</span>
         <span>Role: Lead Designer</span>
-        <span>Year: 2023</span>
+        <span>Year: 2021</span>
       </div>
     </header>
 
-    <img 
+    <img
       src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200&q=80"
-      alt="Project 1 hero image" 
+      alt="Project 1 hero image"
       class="w-full rounded-lg mb-12"
     />
 
     <div class="prose prose-lg max-w-none">
-      <h2>Overview</h2>
-      <p>Detailed description of the project, its goals, and the problem it solved.</p>
-
-      <h2>The Challenge</h2>
-      <p>What problems were you trying to solve? What constraints did you face?</p>
-
-      <h2>Process & Solution</h2>
-      <p>How did you approach the problem? What methods did you use?</p>
-
-      <div class="grid grid-cols-2 gap-4 my-8">
-        <img 
-          src="https://images.unsplash.com/photo-1554200876-56c2f25224fa?w=600&q=80"
-          alt="Process image 1" 
-          class="rounded-lg"
-        />
-        <img 
-          src="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?w=600&q=80"
-          alt="Process image 2" 
-          class="rounded-lg"
-        />
+      <h2>My design process</h2>
+      <ol>
+        <li>Project background</li>
+        <li>UI component inventory</li>
+        <li>Design fundamentals</li>
+        <li>Components</li>
+        <li>Development support</li>
+      </ol>
+      <h2>1. Project Background</h2>
+      <p>
+        Thellio is an IoT (Internet of Things) SaaS (Software-as-a-Service) for
+        business owners so that they can get better control of their business.
+        Thellio tracks business health and productivity and allows efficiency
+        optimization of your connected products and machines.
+      </p>
+      <ul>
+        <li>
+          Before, Thellio had a quite scattered design due to limited investment
+          in UX and UI design. This also led to us building quite some “design
+          debt” over time
+        </li>
+        <li>
+          One solution to this was to invest in building a more robust UI design
+          and UI Component Library, that matched better with Thellio’s brand
+          intent
+        </li>
+        <li>
+          It has also been a way to explore how we can create more of a “wow
+          factor” for the visual aspects of Thellio
+        </li>
+        <li>
+          I worked as an experience designer and UI designer on this project,
+          together with the rest of the Thellio development team
+        </li>
+        <li>
+          The majority of the UI design work happened between May 2021 - October
+          2021.
+        </li>
+      </ul>
+      <h2>2. UI Component Inventory</h2>
+      <p>
+        Since there already was a product in place, a good starting point was to
+        do a so-called UI component inventory.
+        <br /><br />
+        This was done by going through both the current Thellio implementation as
+        well as a visionary Thellio demo. All similar components were grouped.
+        <br /><br />
+        The UI component inventory was then used as a basis to see what UI components
+        and interactions we needed to support to roll out a new UI design.
+        <br /><br />
+        <strong>Some of the learnings included:</strong>
+      </p>
+      <ul>
+        <li>
+          <strong>
+            The current state of the design had been developed ad-hoc and
+            introduced feature-by-feature
+          </strong> (and changed along the way, depending on the feedback).
+        </li>
+        <li>
+          A lot of the design was a mix of both “vanilla” material design /
+          Material-UI components, mixed with templates
+        </li>
+        <li>
+          There was a <strong>lack of coherence and consistency</strong> in terms
+          of design fundamentals (e.g. colours, typography, spacing)
+        </li>
+      </ul>
+      <H2WithSubtitle
+        subtitle="Minimize the number of design decisions."
+        title="3. Design Fundamentals"
+      />
+      <p>
+        A logical next step was to go back to the very basics and building
+        blocks of UI design. To me, this is the very foundation of UI design. If
+        the colours, typography, icons, illustrations and spacing are well-
+        designed, it is much easier to design individual design components. This
+        is also a way to minimize the number of needed design decisions, which
+        ultimately saves time.
+      </p>
+      <p>
+        In this project, there already was a basic branding in place, however,
+        that branding had more accounted for print design than UI design and
+        needed to be expanded upon. A good example was the colours - in the
+        original brand design, there were 5 colours to pick from. However, when
+        you work with UI design you tend to need a lot of variations of each
+        colour to be able to design a UI that really works.
+      </p>
+      <p>
+        Furthermore, most of the original brand colours did not meet
+        accessibility requirements (WCAG AA) and needed to be expanded upon.
+      </p>
+      <p>
+        I also decided to see what I could reuse from material design since the
+        project was implemented in material UI and switching the framework
+        completely would not be feasible given the project timeframe.
+      </p>
+      <H2WithSubtitle
+        subtitle="Change hundreds of screens with one click."
+        title="4. Components"
+      />
+      <p>
+        After defining the design fundamentals, I continued with the UI
+        components and UI patterns.
+      </p>
+      <p>
+        I used an atomic design approach, meaning that I started by building
+        blocks like buttons. Then, I used the same button design/definition
+        across all components that had buttons.
+      </p>
+      <p>
+        So, when I decide to update the master style of Thellio’s primary button
+        design, this will cascade across all other design components that use
+        instances of the same primary button. This is very helpful to roll out
+        design changes that impact a lot of screens.
+      </p>
+      <p>
+        I also tried to account for various states as much as possible (e.g.
+        empty states, loading states, error states, on hover).
+      </p>
+      <H2WithSubtitle
+        subtitle="A single source of truth for designers and developers."
+        title="5. Development Support and Collaboration"
+      />
+      <p>
+        When I introduce a new design, it typically goes through a few steps
+      </p>
+      <ol>
+        <li>
+          Discuss design ideas with the development team and check if we already
+          have any similar components today.
+        </li>
+        <li>
+          Design a new component and its various states (e.g. default, on hover,
+          disabled, empty).
+        </li>
+        <li>
+          Use and test components in their context of use. For more complex
+          components, e.g. the graph above, I usually do a quick coding
+          prototype to see how the component will behave (and as a possible
+          basis for implementation).
+        </li>
+        <li>
+          Document all states and behaviour for each component (both interaction
+          design and UI design), including e.g. responsive design behaviour.
+        </li>
+        <li>Upload impacted screens and components to Zeplin.</li>
+      </ol>
+      <p>
+        Zeplin has been an extremely helpful tool to make sure that the
+        implementation follows the design. It also helps us maintain and keep
+        all design aspects in sync between design and implementation. For
+        instance, we learnt that it’d be best to use a different colour naming
+        to better keep implementation and design in sync at all times.
+      </p>
+      <H2WithSubtitle
+        subtitle="What I learned from this project."
+        title="6. Feedback and Results"
+      />
+      <p>
+        This was a super fun project for me. Since this was a project focused on
+        mainly UI design I got to explore a lot of in-depth design decisions for
+        purely visual aspects.
+      </p>
+      <p>We now have:</p>
+      <ul>
+        <li>A UI Design which is closely aligned to Thellio’s brand values.</li>
+        <li>
+          Shorter design and implementation lead time due to more consistent
+          usage of colours, fonts, spacing, etc.
+        </li>
+      </ul>
+      <p>The feedback has been very positive from stakeholders.</p>
+      <p>
+        One of the biggest takeaways for me personally has been to <strong>
+          not underestimate the power of UI design
+        </strong>. Even if it might just feel like “colours” and “fonts” when
+        starting out, there is so much more to it. Putting it all together
+        really has a huge impact, and I feel that we can now say that Thellio is
+        much closer to the visual language we want to convey.
+      </p>
+      <div class="flex gap-4 flex-col md:flex-row">
+        <div class="flex flex-col basis-full">
+          <p class="text-4xl mb-0">10+</p>
+          <p class="mt-0 text-gray-500">Iterations ↻</p>
+        </div>
+        <div class="flex flex-col basis-full">
+          <p class="text-4xl mb-0">8</p>
+          <p class="mt-0 text-gray-500">Screens 🖥️</p>
+        </div>
+        <div class="flex flex-col basis-full">
+          <p class="text-4xl mb-0">25 %</p>
+          <p class="mt-0 text-gray-500">Decreased design time 🕐</p>
+        </div>
+        <div class="flex flex-col basis-full">
+          <p class="text-4xl mb-0">∞</p>
+          <p class="mt-0 text-gray-500">Cups of coffee ☕️</p>
+        </div>
       </div>
-
-      <h2>Results & Impact</h2>
-      <p>What were the outcomes? How did you measure success?</p>
+      <p class="text-4xl mb-0 italic">
+        We gave a preview of the demo environments to our partners today. They
+        said things like "Wow, this looks great!" and "Impressive user
+        interface!".
+        <br />
+        <br />
+        Well done Thellio-team, we rock!
+      </p>
+      <p class="mt-0 text-violet-600">
+        Quote from our product owner, after he held a demo of Thellio's UI to
+        one of Thellio's partners.
+      </p>
     </div>
+    <!-- <div class="grid grid-cols-2 gap-4 my-8">
+        <img
+          src="https://images.unsplash.com/photo-1554200876-56c2f25224fa?w=600&q=80"
+          alt="Process image 1"
+          class="rounded-lg"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?w=600&q=80"
+          alt="Process image 2"
+          class="rounded-lg"
+        />
+      </div> -->
   </article>
-</BaseLayout> 
+</BaseLayout>
