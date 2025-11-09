@@ -2,6 +2,14 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import H2WithSubtitle from '../../components/H2WithSubtitle.astro';
 const pageTitle = '';
+
+import { Image } from 'astro:assets';
+import headerImage from '../../images/p1-header.png';
+import componentInventoryImage from '../../images/p1-component-inventory.png';
+import designFundamentalsImage from '../../images/p1-design-fundamentals.png';
+import componentLibraryImage from '../../images/p1-component-library.png';
+import devSupportImage from '../../images/p1-dev-support.png';
+import beforeAfterImage from '../../images/p1-before-after.png';
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -16,8 +24,8 @@ const pageTitle = '';
       </div>
     </header>
 
-    <img
-      src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200&q=80"
+    <Image
+      src={headerImage}
       alt="Project 1 hero image"
       class="w-full rounded-lg mb-12"
     />
@@ -94,6 +102,15 @@ const pageTitle = '';
           > in terms of design fundamentals (e.g. colours, typography, spacing)
         </li>
       </ul>
+      <Image
+        src={componentInventoryImage}
+        alt="An example of the UI component inventory for Thellio."
+        class="w-180 rounded-lg"
+      />
+      <p class="text-center -mt-8 text-muted-foreground">
+        An example of the component inventory for Thellio.
+      </p>
+
       <H2WithSubtitle
         subtitle="Minimize the number of design decisions."
         title="3. Design Fundamentals"
@@ -123,6 +140,16 @@ const pageTitle = '';
         project was implemented in material UI and switching the framework
         completely would not be feasible given the project timeframe.
       </p>
+      <Image
+        src={designFundamentalsImage}
+        alt="Colours, typography, icons, spacing and illustrations - the foundations of a good UI design."
+        class="w-180 rounded-lg"
+      />
+      <p class="text-center -mt-8 text-muted-foreground">
+        Colours, typography, icons, spacing and illustrations - the foundations
+        of a good UI design.
+      </p>
+
       <H2WithSubtitle
         subtitle="Change hundreds of screens with one click."
         title="4. Components"
@@ -146,6 +173,15 @@ const pageTitle = '';
         I also tried to account for various states as much as possible (e.g.
         empty states, loading states, error states, on hover).
       </p>
+      <Image
+        src={componentLibraryImage}
+        alt="A small example of the UI component library."
+        class="w-180 rounded-lg"
+      />
+      <p class="text-center -mt-8 text-muted-foreground">
+        A small example of the UI component library.
+      </p>
+
       <H2WithSubtitle
         subtitle="A single source of truth for designers and developers."
         title="5. Development Support and Collaboration"
@@ -181,6 +217,17 @@ const pageTitle = '';
         instance, we learnt that it’d be best to use a different colour naming
         to better keep implementation and design in sync at all times.
       </p>
+      <Image
+        src={devSupportImage}
+        alt="An example of the design documentation to make the design easier to implement for the developers. In this case for a specific graph (a gauge)."
+        class="w-180 rounded-lg"
+      />
+      <p class="text-center -mt-8 text-muted-foreground">
+        An example of the design documentation to make the design easier to
+        implement for the developers. In this case for a specific graph (a
+        gauge).
+      </p>
+
       <H2WithSubtitle
         subtitle="What I learned from this project."
         title="6. Feedback and Results"
@@ -209,23 +256,31 @@ const pageTitle = '';
         really has a huge impact, and I feel that we can now say that Thellio is
         much closer to the visual language we want to convey.
       </p>
-      <div class="flex gap-4 flex-col md:flex-row">
+      <Image
+        src={beforeAfterImage}
+        alt="The old UI design (left), compared to the new UI design (right)."
+        class="w-full rounded-lg mb-12"
+      />
+      <p class="text-center -mt-8 text-muted-foreground">
+        The old UI design (left), compared to the new UI design (right).
+      </p>
+      <div class="flex gap-4 md:mt-24 flex-col md:flex-row">
         <div class="flex flex-col basis-full">
-          <p class="text-4xl mb-0">10+</p>
+          <p class="text-4xl mt-0 mb-0">10+</p>
           <p class="mt-0 text-gray-500 dark:text-gray-400">Iterations ↻</p>
         </div>
         <div class="flex flex-col basis-full">
-          <p class="text-4xl mb-0">8</p>
+          <p class="text-4xl mt-0 mb-0">8</p>
           <p class="mt-0 text-gray-500 dark:text-gray-400">Screens 🖥️</p>
         </div>
         <div class="flex flex-col basis-full">
-          <p class="text-4xl mb-0">25 %</p>
+          <p class="text-4xl mt-0 mb-0">25 %</p>
           <p class="mt-0 text-gray-500 dark:text-gray-400">
             Decreased design time 🕐
           </p>
         </div>
         <div class="flex flex-col basis-full">
-          <p class="text-4xl mb-0">∞</p>
+          <p class="text-4xl mt-0 mb-0">∞</p>
           <p class="mt-0 text-gray-500 dark:text-gray-400">Cups of coffee ☕️</p>
         </div>
       </div>
