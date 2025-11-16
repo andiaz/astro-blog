@@ -2,59 +2,90 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/globals.css';
-const { pageTitle = "Default Title" } = Astro.props; // Set a default title if pageTitle is not provided
-import { SEO } from "astro-seo";
+const { pageTitle = 'Default Title' } = Astro.props; // Set a default title if pageTitle is not provided
+import { SEO } from 'astro-seo';
 
 import profileImage from '../images/andreas-2.jpeg';
+
+import 'basiclightbox/dist/basicLightbox.min.css';
 ---
 
 <html lang="en">
-	<head>
-		<SEO
+  <head>
+    <SEO
       title="Andreas Johansson UX"
       description="Andreas Johansson UX - UX design, productivity, AI and a lot of other things I enjoy writing about."
       openGraph={{
         basic: {
-          title: "UX design, productivity, AI and a lot of other things I enjoy writing about.",
-          type: "website",
+          title:
+            'UX design, productivity, AI and a lot of other things I enjoy writing about.',
+          type: 'website',
           image: profileImage.src,
-        }
+        },
       }}
       twitter={{
-        creator: "@djandreasj"
+        creator: '@djandreasj',
       }}
       extend={{
         // extending the default link tags
-        link: [{ rel: "icon", href: "/favicon.ico" }],
+        link: [{ rel: 'icon', href: '/favicon.ico' }],
         // extending the default meta tags
         meta: [
           {
-            name: "twitter:image",
+            name: 'twitter:image',
             content: profileImage.src,
           },
-          { name: "twitter:title", content: "Andreas Johansson UX - UX design, productivity, AI and a lot of other things I enjoy writing about." },
-          { name: "twitter:description", content: "UX design, productivity, AI and a lot of other things I enjoy writing about." },
+          {
+            name: 'twitter:title',
+            content:
+              'Andreas Johansson UX - UX design, productivity, AI and a lot of other things I enjoy writing about.',
+          },
+          {
+            name: 'twitter:description',
+            content:
+              'UX design, productivity, AI and a lot of other things I enjoy writing about.',
+          },
         ],
       }}
     />
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="sitemap" href="/sitemap-index.xml" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body class="min-h-screen bg-background font-sans antialiased">
-		<div class="relative flex min-h-screen flex-col">
-			<Header />
-			<main class="flex-1">
-				<div class="container py-6 md:py-12">
-					{pageTitle !== "Default Title" && <h1 class="text-3xl font-bold tracking-tight">{pageTitle}</h1>}
-					<slot />
-				</div>
-			</main>
-			<Footer />
-		</div>
-		<!-- <script>import "../scripts/menu.js";</script> -->
-	</body>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="min-h-screen bg-background font-sans antialiased">
+    <div class="relative flex min-h-screen flex-col">
+      <!-- Lightbox bootstrap script -->
+      <script>
+        import * as basicLightbox from 'basiclightbox';
+        import 'basiclightbox/dist/basicLightbox.min.css';
+
+        const images = document.querySelectorAll('[data-lightbox-src]');
+
+        images.forEach((img) => {
+          img.addEventListener('click', () => {
+            const src = img.getAttribute('data-lightbox-src');
+            const alt = img.getAttribute('alt') || '';
+
+            basicLightbox.create(`<img src="${src}" alt="${alt}" />`).show();
+          });
+        });
+      </script>
+      <Header />
+      <main class="flex-1">
+        <div class="container py-6 md:py-12">
+          {
+            pageTitle !== 'Default Title' && (
+              <h1 class="text-3xl font-bold tracking-tight">{pageTitle}</h1>
+            )
+          }
+          <slot />
+        </div>
+      </main>
+      <Footer />
+    </div>
+    <!-- <script>import "../scripts/menu.js";</script> -->
+  </body>
 </html>
