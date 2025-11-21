@@ -193,8 +193,9 @@ import profileImage from '../images/andreas-2.jpeg';
                   {category.tools.map((tool) => (
                     <span
                       class="px-2.5 py-1 rounded-md text-sm bg-muted/40 
-                             text-muted-foreground border border-border/40"
+                              border border-border/40"
                     >
+                      <span class="text-lg" />
                       {tool}
                     </span>
                   ))}
@@ -217,9 +218,9 @@ import profileImage from '../images/andreas-2.jpeg';
             interests.map((interest) => (
               <span
                 class="flex items-center gap-2 px-3 py-1 rounded-md 
-                       bg-muted/30 border border-border/40 text-sm"
+                       bg-muted/30 border border-border/40 text-sm text-muted-foreground"
               >
-                <span class="text-lg">{interest.icon}</span>
+                <span class="text-sm opacity-80">{interest.icon}</span>
                 {interest.name}
               </span>
             ))
