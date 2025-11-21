@@ -13,36 +13,32 @@
     class="group relative flex items-center justify-center
            focus:outline-none focus-visible:outline-none"
   >
-    {/* Circle */}
+    <!-- Circle -->
     <span
       class="flex h-11 w-11 items-center justify-center rounded-full
         border border-slate-300 bg-white text-sm font-semibold
         text-slate-900 dark:text-white
-        /* animate motion + shadow only */
         transition-transform transition-shadow duration-200
-        /* hover motion & glow */
         group-hover:-translate-y-0.5
         group-hover:ring-2 group-hover:ring-slate-900/15
         group-hover:shadow-md group-hover:shadow-slate-900/20
-        /* dark mode base + hover glow */
         dark:bg-slate-900 dark:border-slate-700
         dark:group-hover:bg-slate-800
         dark:group-hover:ring-2 dark:group-hover:ring-slate-200/40
-        /* keyboard focus */
         group-focus-visible:ring-2 group-focus-visible:ring-sky-500/60"
     >
       ↑
     </span>
 
-    {/* Tooltip */}
+    <!-- Tooltip: JS-controlled, no :hover/:focus -->
     <span
+      data-tooltip
       class="pointer-events-none
         absolute -top-9 left-1/2 -translate-x-1/2
         rounded-full px-2 py-1 text-xs font-medium
         bg-slate-900 text-white shadow-md
         dark:bg-slate-100 dark:text-slate-900
-        opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100
-        transition-opacity
+        opacity-0 transition-opacity
         whitespace-nowrap"
       role="tooltip"
     >
@@ -55,23 +51,46 @@
   const container = document.getElementById('back-to-top');
 
   if (container) {
+    const button = container.querySelector('button');
+    const tooltip = container.querySelector('[data-tooltip]');
     const showAt = 200; // px scroll
 
+    const hideTooltip = () => {
+      if (tooltip) {
+        tooltip.classList.add('opacity-0');
+      }
+    };
+
+    const showTooltip = () => {
+      if (tooltip) {
+        tooltip.classList.remove('opacity-0');
+      }
+    };
+
     const handleScroll = () => {
-      container.hidden = window.scrollY <= showAt;
+      const show = window.scrollY > showAt;
+      container.hidden = !show;
+      if (!show) hideTooltip();
     };
 
     handleScroll();
     window.addEventListener('scroll', handleScroll);
 
+    // Desktop hover tooltip
+    container.addEventListener('mouseenter', showTooltip);
+    container.addEventListener('mouseleave', hideTooltip);
+
+    // Click: scroll, clear hash, hide tooltip, blur button
     container.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
       });
 
-      // Remove any #hash from the URL
       history.replaceState(null, '', location.pathname + location.search);
+
+      hideTooltip();
+      button?.blur();
     });
   }
 </script>
