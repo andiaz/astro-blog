@@ -1,32 +1,52 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "About Me";
+const pageTitle = 'About Me';
 
 const skills = [
-  { name: "Skills", tools: ["User research", "UX strategy", "Information architecture", "Concept", "Design", "Prototyping", "Responsive design"] },
-  { name: "Tools", tools: ["Figma", "Adobe XD", "Zeplin"] },
-  { name: "Development", tools: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Git"] },
+  {
+    name: 'Skills',
+    icon: '🎯',
+    tools: [
+      'User research',
+      'UX strategy',
+      'Information architecture',
+      'UI Design',
+      'Prototyping',
+      'Usability testing',
+      'Accessibility',
+    ],
+  },
+  {
+    name: 'Tools',
+    icon: '🧰',
+    tools: ['Figma', 'Adobe XD', 'Zeplin'],
+  },
+  {
+    name: 'Development',
+    icon: '💻',
+    tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind', 'Git'],
+  },
 ];
 
 const interests = [
-  "Digital Art & Illustration",
-  "Electronic Music Production",
-  "Technology & AI",
-  "Gaming",
-  "Fantasy & Sci-fi",
+  { name: 'Digital Art & Illustration', icon: '🎨' },
+  { name: 'Electronic Music Production', icon: '🎹' },
+  { name: 'Technology & AI', icon: '🤖' },
+  { name: 'Gaming', icon: '🎮' },
+  { name: 'Fantasy & Sci-fi', icon: '🌌' },
 ];
 
 const labels = [
-  "Dynamic Progressions",
-  "Emergent Music",
-  "Inception",
-  "Moonscape Records",
-  "Midnight Coast Productions",
-  "Nicksher Music",
-  "Progressive State Records",
-  "Progressive Vibes",
-  "RED/CYAN",
-  "Synth Collective"
+  'Dynamic Progressions',
+  'Emergent Music',
+  'Inception',
+  'Moonscape Records',
+  'Midnight Coast Productions',
+  'Nicksher Music',
+  'Progressive State Records',
+  'Progressive Vibes',
+  'RED/CYAN',
+  'Synth Collective',
 ];
 
 import { Image } from 'astro:assets';
@@ -34,165 +54,230 @@ import profileImage from '../images/andreas-2.jpeg';
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    {/* Hero Section */}
-    <section class="mb-20">
-      <div class="relative">
-        <h1 class="pt-8 text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70 animate-fade-in">
-          Hi, I'm Andreas
-          <span class="absolute right-0 rotate-12 animate-float text-2xl text-slate-500 dark:text-slate-400">🎹</span>
-        </h1>
-      </div>
-      <p class="text-xl text-muted-foreground max-w-2xl animate-fade-in-up">
-        I thrive at the intersection of technology and creativity. Currently shaping the future of IoT at Telenor IoT, 
-        where we build exciting connected solutions for businesses.
-      </p>
-    </section>
+  {/* Hero Section */}
+  <section class="mb-20">
+    <div class="relative">
+      <h1
+        class="pt-8 text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70 animate-fade-in"
+      >
+        Hi, I'm Andreas
+        <span
+          class="absolute right-0 rotate-12 animate-float text-2xl text-slate-500 dark:text-slate-400"
+          >🎹</span
+        >
+      </h1>
+    </div>
+    <p class="text-xl text-muted-foreground max-w-2xl animate-fade-in-up">
+      I thrive at the intersection of technology and creativity. Currently
+      shaping the future of IoT at Telenor IoT, where we build exciting
+      connected solutions for businesses.
+    </p>
+  </section>
 
-    {/* About Section */}
-    <section class="mb-20">
-      <div class="grid gap-12 md:grid-cols-2">
-        <div class="space-y-6">
-          <h2 class="text-3xl font-semibold tracking-tight border-b pb-2">My Journey</h2>
-          <div class="opacity-60">
-            <p>
-              My journey in web development began around 2000. What started with simple HTML pages in Dreamweaver 
-              evolved into complex applications with PHP & MySQL. This natural progression from basic tools to 
-              more sophisticated technologies shaped my understanding of how technology can enhance user experiences.
-            </p>
-            <p class="mt-4">
-              Today, I channel this experience into creating intuitive digital solutions, always staying curious 
-              about new technologies and creative possibilities.
-            </p>
-          </div>
-        </div>
-        <div class="space-y-6">
-          <h2 class="text-3xl font-semibold tracking-tight border-b pb-2">Beyond Work</h2>
-          <div class="opacity-60">
-            <p>
-              When I'm not designing user experiences, you'll find me producing music (check out my tracks on Spotify 
-              as "Andreas J"), creating digital art, or exploring new technologies. I'm particularly fascinated by AI 
-              and its creative applications.
-            </p>
-            <p class="mt-4">
-              I live in Karlskrona with my wonderful wife Susanna, who means everything to me. Together, we've 
-              explored places from the plains of Mongolia to beyond.
-            </p>
-          </div>
+  {/* About Section */}
+  <section class="mb-20">
+    <div class="grid gap-12 md:grid-cols-2">
+      <div class="space-y-6">
+        <h2 class="text-3xl font-semibold tracking-tight border-b pb-2">
+          My Journey
+        </h2>
+        <div>
+          <p class="text-muted-foreground">
+            My journey in web development began around 2000. What started with
+            simple HTML pages in Dreamweaver evolved into complex applications
+            with PHP & MySQL. This natural progression from basic tools to more
+            sophisticated technologies shaped my understanding of how technology
+            can enhance user experiences.
+          </p>
+          <p class="mt-4 text-muted-foreground">
+            Today, I channel this experience into creating intuitive digital
+            solutions, always staying curious about new technologies and
+            creative possibilities.
+          </p>
         </div>
       </div>
-    </section>
+      <div class="space-y-6">
+        <h2 class="text-3xl font-semibold tracking-tight border-b pb-2">
+          Beyond Work
+        </h2>
+        <div>
+          <p class="text-muted-foreground">
+            When I'm not designing user experiences, you'll find me producing
+            music (check out my tracks on Spotify as "Andreas J"), creating
+            digital art, or exploring new technologies. I'm particularly
+            fascinated by AI and its creative applications.
+          </p>
+          <p class="text-muted-foreground mt-4">
+            I live in Karlskrona with my wonderful wife Susanna, who means
+            everything to me. Together, we've explored places from the plains of
+            Mongolia to beyond.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    {/* Featured Content - Music Production */}
-    <section class="mb-20 relative">
-      <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent -skew-y-3"></div>
-      <div class="relative">
-        <h2 class="text-3xl font-semibold tracking-tight border-b pb-2 mb-8">Music Production</h2>
-        <div class="grid gap-8 md:grid-cols-2">
-          <div>
-            <p class="text-xl font-medium mb-4">
-              Producer of Melodic Progressive House & Trance
-            </p>
-            <p class="opacity-60">
-              My music journey began in 2012 with FL Studio, diving deep into the world of electronic music production. 
-              I've focused on progressive house and trance, the genres that first captured my imagination in electronic music.
-            </p>
-            <p class="opacity-60 mt-4">
-              Over the years, I've had the privilege of working with various record labels, each collaboration adding 
-              to my growth as a producer.
-            </p>
-          </div>
-          <div class="space-y-6">
-            <h3 class="text-xl font-medium">Featured Labels</h3>
-            <div class="grid grid-cols-2 gap-3">
-              {labels.map(label => (
+  {/* Featured Content - Music Production */}
+  <section class="mb-20 relative">
+    <div class="relative">
+      <h2 class="text-3xl font-semibold tracking-tight border-b pb-2 mb-8">
+        Music Production
+      </h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div>
+          <p class="text-xl font-medium mb-4">
+            Producer of Melodic Progressive House & Trance
+          </p>
+          <p class="text-muted-foreground">
+            My music journey began in 2012 with FL Studio, diving deep into the
+            world of electronic music production. I've focused on progressive
+            house and trance, the genres that first captured my imagination in
+            electronic music.
+          </p>
+          <p class="text-muted-foreground mt-4">
+            Over the years, I've had the privilege of working with various
+            record labels, each collaboration adding to my growth as a producer.
+          </p>
+        </div>
+        <div class="space-y-6">
+          <h3 class="text-xl font-medium">Featured Labels</h3>
+          <div class="grid grid-cols-2 gap-3">
+            {
+              labels.map((label) => (
                 <div class="px-4 py-2 bg-secondary/50 rounded-md text-sm hover:bg-secondary transition-colors">
                   {label}
                 </div>
-              ))}
-            </div>
+              ))
+            }
           </div>
         </div>
-        
-        <div class="mt-8">
-          <iframe 
-            class="rounded-lg shadow-lg w-full max-w-3xl mx-auto"
-            src="https://www.youtube.com/embed/O-pXGPmUyaM" 
-            height="315"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
       </div>
-    </section>
 
-    {/* Skills & Interests */}
-    <section class="mb-20">
-      <h2 class="text-3xl font-semibold tracking-tight border-b pb-2 mb-12">Expertise & Passions</h2>
-      <div class="grid gap-12 md:grid-cols-2">
-        <div class="space-y-8">
+      <div class="mt-8">
+        <iframe
+          class="rounded-lg shadow-lg w-full max-w-3xl mx-auto"
+          src="https://www.youtube.com/embed/O-pXGPmUyaM"
+          height="315"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  {/* Skills & Interests */}
+  <section class="mb-20">
+    <h2 class="text-3xl font-semibold tracking-tight border-b pb-2 mb-12">
+      Expertise & Passions
+    </h2>
+
+    <div class="grid gap-12 md:grid-cols-2">
+      <!-- Left: Skills & Tools -->
+      <div class="space-y-10">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🛠️</span>
           <h3 class="text-2xl font-medium">Skills & Tools</h3>
-          <div class="grid gap-6">
-            {skills.map(category => (
+        </div>
+
+        <div class="grid gap-8">
+          {
+            skills.map((category) => (
               <div class="space-y-3">
-                <h4 class="text-lg font-medium text-primary">{category.name}</h4>
+                <div class="flex items-center gap-2">
+                  <span class="text-lg opacity-80">{category.icon}</span>
+                  <h4 class="text-lg font-medium text-primary">
+                    {category.name}
+                  </h4>
+                </div>
+
                 <div class="flex flex-wrap gap-2">
-                  {category.tools.map(tool => (
-                    <span class="px-3 py-1 bg-secondary text-secondary-foreground rounded-md text-sm">
+                  {category.tools.map((tool) => (
+                    <span
+                      class="px-2.5 py-1 rounded-md text-sm bg-muted/40 
+                             text-muted-foreground border border-border/40"
+                    >
                       {tool}
                     </span>
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-        
-        <div class="space-y-8">
-          <h3 class="text-2xl font-medium">Interests</h3>
-          <div class="flex flex-wrap gap-3">
-            {interests.map(interest => (
-              <span class="px-4 py-2 border rounded-md text-sm hover:border-primary transition-colors">
-                {interest}
-              </span>
-            ))}
-          </div>
+            ))
+          }
         </div>
       </div>
-    </section>
 
-    {/* Personal Note */}
-    <section class="max-w-none">
-      <h2 class="text-3xl font-semibold tracking-tight border-b pb-2 mb-6 non-prose">Why This Site Exists</h2>
-      <p class="opacity-60">
-        This site is my creative playground where I share my experiences and insights about UX design, 
-        creative technology, and digital creation. While I write primarily for the joy of creative expression, 
-        I'm always thrilled when others find value in my content.
-      </p>
-      <p class="opacity-60 mt-4">
-        All content here represents my personal views and experiences, carefully crafted to be as reliable 
-        and fact-based as possible. If you spot anything that needs correction, please don't hesitate to reach out.
-      </p>
-    </section>
+      <!-- Right: Interests -->
+      <div class="space-y-8">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">✨</span>
+          <h3 class="text-2xl font-medium">Interests</h3>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          {
+            interests.map((interest) => (
+              <span
+                class="flex items-center gap-2 px-3 py-1 rounded-md 
+                       bg-muted/30 border border-border/40 text-sm"
+              >
+                <span class="text-lg">{interest.icon}</span>
+                {interest.name}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Personal Note */}
+  <section class="max-w-none">
+    <h2
+      class="text-3xl font-semibold tracking-tight border-b pb-2 mb-6 non-prose"
+    >
+      Why This Site Exists
+    </h2>
+    <p class="text-muted-foreground max-w-xl">
+      This site is my creative playground where I share my experiences and
+      insights about UX design, creative technology, and digital creation. While
+      I write primarily for the joy of creative expression, I'm always thrilled
+      when others find value in my content.
+    </p>
+    <p class="text-muted-foreground mt-4 max-w-xl">
+      All content here represents my personal views and experiences, carefully
+      crafted to be as reliable and fact-based as possible. If you spot anything
+      that needs correction, please don't hesitate to reach out.
+    </p>
+  </section>
 </BaseLayout>
 
 <style>
   @keyframes float {
-    0% { transform: translateY(0px) rotate(12deg); }
-    50% { transform: translateY(-10px) rotate(12deg); }
-    100% { transform: translateY(0px) rotate(12deg); }
+    0% {
+      transform: translateY(0px) rotate(12deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(12deg);
+    }
+    100% {
+      transform: translateY(0px) rotate(12deg);
+    }
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes fadeInUp {
-    from { 
+    from {
       opacity: 0;
       transform: translateY(20px);
     }
-    to { 
+    to {
       opacity: 1;
       transform: translateY(0);
     }

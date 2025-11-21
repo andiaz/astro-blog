@@ -5,14 +5,36 @@ const links = [
   { href: '/ux', label: 'UX' },
   { href: '/about', label: 'About Me' },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
-<nav class="flex items-center space-x-6 text-sm font-medium">
-  {links.map(link => (
-    <a
-      href={link.href}
-      class="transition-colors hover:text-foreground/80 text-foreground/60"
-    >
-      {link.label}
-    </a>
-  ))}
+
+<nav class="flex items-center gap-6 text-sm font-medium">
+  {
+    links.map((link) => {
+      const isActive =
+        link.href === '/'
+          ? currentPath === '/'
+          : currentPath.startsWith(link.href);
+
+      return (
+        <a
+          href={link.href}
+          class={`relative pb-1 transition-colors ${
+            isActive
+              ? 'text-foreground'
+              : 'text-foreground/70 hover:text-foreground'
+          }`}
+        >
+          {link.label}
+          {/* underline indicator */}
+          <span
+            class={`pointer-events-none absolute left-0 right-0 -bottom-0.5 h-[2px] rounded-full bg-primary transition-opacity ${
+              isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+            }`}
+          />
+        </a>
+      );
+    })
+  }
 </nav>
