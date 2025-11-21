@@ -1,0 +1,77 @@
+---
+
+---
+
+<div
+  id="back-to-top"
+  class="fixed right-6 md:right-10 bottom-5 md:bottom-8 z-50"
+  hidden
+>
+  <button
+    type="button"
+    aria-label="Back to top"
+    class="group relative flex items-center justify-center
+           focus:outline-none focus-visible:outline-none"
+  >
+    {/* Circle */}
+    <span
+      class="flex h-11 w-11 items-center justify-center rounded-full
+        border border-slate-300 bg-white text-sm font-semibold
+        text-slate-900 dark:text-white
+        /* animate motion + shadow only */
+        transition-transform transition-shadow duration-200
+        /* hover motion & glow */
+        group-hover:-translate-y-0.5
+        group-hover:ring-2 group-hover:ring-slate-900/15
+        group-hover:shadow-md group-hover:shadow-slate-900/20
+        /* dark mode base + hover glow */
+        dark:bg-slate-900 dark:border-slate-700
+        dark:group-hover:bg-slate-800
+        dark:group-hover:ring-2 dark:group-hover:ring-slate-200/40
+        /* keyboard focus */
+        group-focus-visible:ring-2 group-focus-visible:ring-sky-500/60"
+    >
+      ↑
+    </span>
+
+    {/* Tooltip */}
+    <span
+      class="pointer-events-none
+        absolute -top-9 left-1/2 -translate-x-1/2
+        rounded-full px-2 py-1 text-xs font-medium
+        bg-slate-900 text-white shadow-md
+        dark:bg-slate-100 dark:text-slate-900
+        opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100
+        transition-opacity
+        whitespace-nowrap"
+      role="tooltip"
+    >
+      Back to top
+    </span>
+  </button>
+</div>
+
+<script>
+  const container = document.getElementById('back-to-top');
+
+  if (container) {
+    const showAt = 200; // px scroll
+
+    const handleScroll = () => {
+      container.hidden = window.scrollY <= showAt;
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+
+    container.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+
+      // Remove any #hash from the URL
+      history.replaceState(null, '', location.pathname + location.search);
+    });
+  }
+</script>
