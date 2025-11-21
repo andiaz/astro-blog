@@ -1,6 +1,6 @@
 ---
-const { title, subtitle } = Astro.props;
+const { title, subtitle, id } = Astro.props;
 ---
 
 <p class="mb-0 mt-16 text-violet-600 dark:text-violet-300">{subtitle}</p>
-<h2 class="mt-0 dark:text-white">{title}</h2>
+<h2 class="mt-0 dark:text-white" id={id}>{title}</h2>
