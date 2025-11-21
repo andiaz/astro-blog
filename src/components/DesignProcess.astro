@@ -1,0 +1,63 @@
+---
+interface Step {
+  id: string; // id of the target H2, without "#"
+  label: string; // visible text
+}
+
+interface Props {
+  title: string;
+  titleId?: string;
+  steps: Step[];
+}
+
+const { title, titleId = 'design-process', steps } = Astro.props;
+---
+
+<section aria-labelledby={titleId}>
+  <h2 id={titleId} class="text-xl font-semibold text-center dark:text-white">
+    {title}
+  </h2>
+
+  <nav aria-label={`${title} steps`} class="mt-6">
+    <ol
+      class="relative flex flex-col gap-8 md:gap-12 md:flex-row md:items-start md:justify-between"
+    >
+      {
+        steps.map((step, index) => (
+          <li class="relative flex flex-col items-center text-center md:flex-1">
+            <a
+              href={`#${step.id}`}
+              class="group flex flex-col items-center no-underline
+                   focus:outline-none focus-visible:outline-none"
+            >
+              <span
+                class="
+                flex h-10 w-10 items-center justify-center rounded-full
+                border border-slate-300 bg-white text-sm font-semibold
+                text-slate-900 dark:text-white
+
+                transition-transform transition-shadow duration-200
+
+                group-hover:-translate-y-0.5
+                group-hover:ring-2 group-hover:ring-slate-900/15
+                group-hover:shadow-md group-hover:shadow-slate-900/20
+
+                dark:bg-slate-900 dark:border-slate-700
+                dark:group-hover:bg-slate-800
+                dark:group-hover:ring-2 dark:group-hover:ring-slate-200/40
+
+                group-focus-visible:ring-2 group-focus-visible:ring-sky-500/60
+              "
+              >
+                {index + 1}
+              </span>
+              <span class="mt-3 md:mt-4 text-base font-semibold text-slate-900 dark:text-white group-hover:underline">
+                {step.label}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+</section>
