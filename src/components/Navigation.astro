@@ -6,7 +6,7 @@ const links = [
   { href: '/about', label: 'About Me' },
 ];
 
-// Remove trailing slashes, keep "/" for home
+// Remove trailing "/" but keep "/" for home
 const normalize = (path: string) => path.replace(/\/+$/, '') || '/';
 
 const currentPath = normalize(Astro.url.pathname);
@@ -25,11 +25,11 @@ const currentPath = normalize(Astro.url.pathname);
       return (
         <a
           href={link.href}
-          class={`pb-1 border-b-2 transition-colors ${
+          class={
             isActive
-              ? 'text-foreground border-primary'
-              : 'text-foreground/70 border-transparent hover:text-foreground hover:border-primary/60'
-          }`}
+              ? 'pb-1 border-b-2 border-primary text-foreground'
+              : 'pb-1 border-b-2 border-transparent text-foreground/70 hover:text-foreground hover:border-primary/60'
+          }
         >
           {link.label}
         </a>
