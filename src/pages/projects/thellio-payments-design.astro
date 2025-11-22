@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import H2WithSubtitle from '../../components/H2WithSubtitle.astro';
+const pageTitle = '';
+
+import DesignProcess from '../../components/DesignProcess.astro';
+
+const designSteps = [
+  { id: 'research', label: 'Research' },
+  { id: 'analysis', label: 'Analysis' },
+  { id: 'design', label: 'Design' },
+  { id: 'validation', label: 'Validation' },
+];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <article class="py-12 max-w-3xl mx-auto">
+    <nav class="mb-4">
+      <ol class="list-reset flex text-muted-foreground text-sm">
+        <li>
+          <a href="/" class="text-muted-foreground hover:underline">Home</a>
+        </li>
+        <li>
+          <span class="text-muted-foreground mx-2">/</span>
+        </li>
+        <li>
+          <a
+            href="/projects"
+            class="text-muted-foreground
+            hover:underline">Projects</a
+          >
+        </li>
+      </ol>
+    </nav>
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold tracking-tight mb-4">
+        UX & UI design for the Thellio Payments feature
+      </h1>
+      <div class="flex gap-4 text-muted-foreground">
+        <span>Experience design and UI design</span>
+        <span>September-October 2021</span>
+      </div>
+    </header>
+
+    <img
+      src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200&q=80"
+      alt="Project 2 hero image"
+      class="w-full rounded-lg mb-12"
+    />
+
+    <div
+      class="prose prose-lg max-w-none text-muted-foreground dark:text-gray-200"
+    >
+      <h2 class="dark:text-white">Project background and design process</h2>
+      <ul>
+        <li>
+          Thellio is an IoT (Internet of Things) SaaS (Software-as-a-Service)
+          for business owners so that they can get better control of their
+          business. Thellio tracks business health and productivity and allows
+          efficiency optimization of your connected products and machines.
+        </li>
+        <li>
+          The Payments feature was one of the features where I worked on the UX
+          process end-to-end in Thellio.
+        </li>
+        <li>
+          This case study describes the decisions I took along the way, what I
+          learned, and what the outcome was.
+        </li>
+      </ul>
+      <p>
+        Being the only designer in the team, I started by better understanding
+        what problems the product was supposed to solve, and who the product was
+        targeting.
+      </p><p>
+        I started the process by interviewing stakeholders. Based on what I
+        learned, I documented a so- called "UX Definition" that described the
+        business problem, expected business outcomes, target users and ideas for
+        solutions that met both user and business outcomes. Since this is quite
+        business- sensitive information, I am unfortunately not able to share my
+        learnings from there.
+      </p>
+
+      <DesignProcess title="My design process" steps={designSteps} />
+
+      <H2WithSubtitle
+        subtitle="UX research and persona."
+        title="1. Research"
+        id="research"
+      />
+      <p>
+        The research was quite challenging in this project. Since Thellio was
+        very much a "startup" kind of design project, we wanted to get an MVP
+        quickly out of the door. In addition to that, since the product targeted
+        Business to Business users, getting a hold of target users without
+        promising too much was more challenging than initially expected.
+      </p><p>
+        However, I still wanted to make sure that the Payments feature was
+        useful and based on actual user needs. Therefore, I decided to do
+        so-called "desk research", which consisted of analyzing job descriptions
+        and interviews I found online for our intended target user:
+      </p><p class="font-bold">Eva, the Finance Manager.</p><p>
+        Here are some of the key takeaways I learned during the research phase:
+      </p><p class="text-3xl mb-0 italic dark:text-white">
+        It is extremely important for Eva that the financial numbers are 100%
+        correct.
+      </p><p>
+        This is way more important than the overall time it takes to calculate
+        the numbers themselves.
+      </p><p>
+        Eva is very proficient in tools such as Excel, which she relies on
+        heavily.
+      </p><p>
+        She'd hate having to abandon Excel for another less well-tested system.
+      </p>
+
+      <H2WithSubtitle
+        subtitle="Information architecture."
+        title="2. Analysis"
+        id="analysis"
+      />
+      <p>Description</p>
+
+      <H2WithSubtitle
+        subtitle="UI design and prototype."
+        title="3. Design"
+        id="design"
+      />
+      <p>Description</p>
+
+      <H2WithSubtitle
+        subtitle="Usability testing."
+        title="4. Validation"
+        id="validation"
+      />
+      <p>Description</p>
+      <h2>What I learned</h2>
+
+      <p>Description</p>
+    </div>
+  </article>
+</BaseLayout>
