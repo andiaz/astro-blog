@@ -10,6 +10,17 @@ import profileImage from '../images/andreas-2.jpeg';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
 import BackToTop from '../components/BackToTop.astro';
+
+const backLinkRoots = ['/ux', '/about', '/ai', '/projects', '/portfolio'];
+
+// Normalize path: remove trailing slashes, keep "/" for home
+const normalize = (path: string) => path.replace(/\/+$/, '') || '/';
+
+const currentPath = normalize(Astro.url.pathname);
+
+// Show back link only if:
+// - we are exactly on one of the root paths above (not /ux/post-1 etc.)
+const showBackLink = backLinkRoots.includes(currentPath);
 ---
 
 <html lang="en">
@@ -79,10 +90,25 @@ import BackToTop from '../components/BackToTop.astro';
       <main class="flex-1">
         <div class="container py-6 md:py-12">
           {
+            showBackLink && (
+              <a
+                href="/"
+                class="mb-4 inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
+              >
+                <span aria-hidden="true" class="mr-1">
+                  ←
+                </span>
+                Back to home
+              </a>
+            )
+          }
+
+          {
             pageTitle !== 'Default Title' && (
               <h1 class="text-3xl font-bold tracking-tight">{pageTitle}</h1>
             )
           }
+
           <slot />
         </div>
       </main>

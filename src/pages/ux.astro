@@ -7,8 +7,8 @@ const posts = await getCollection('ux');
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <section class="py-12">
-    <p class="px-2 mb-2">A list of all UX-related posts below:</p>
+  <section class="py-6">
+    <p class="mb-2">A list of all UX-related posts below:</p>
     <ol>
       {
         posts.map((post) => (
@@ -18,4 +18,3 @@ const posts = await getCollection('ux');
     </ol>
   </section>
 </BaseLayout>
-
