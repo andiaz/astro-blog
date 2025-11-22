@@ -6,33 +6,32 @@ const links = [
   { href: '/about', label: 'About Me' },
 ];
 
-const currentPath = Astro.url.pathname;
+// Remove trailing slashes, keep "/" for home
+const normalize = (path: string) => path.replace(/\/+$/, '') || '/';
+
+const currentPath = normalize(Astro.url.pathname);
 ---
 
 <nav class="flex items-center gap-6 text-sm font-medium">
   {
     links.map((link) => {
+      const href = normalize(link.href);
+
       const isActive =
-        link.href === '/'
+        href === '/'
           ? currentPath === '/'
-          : currentPath.startsWith(link.href);
+          : currentPath === href || currentPath.startsWith(href + '/');
 
       return (
         <a
           href={link.href}
-          class={`relative pb-1 transition-colors ${
+          class={`pb-1 border-b-2 transition-colors ${
             isActive
-              ? 'text-foreground'
-              : 'text-foreground/70 hover:text-foreground'
+              ? 'text-foreground border-primary'
+              : 'text-foreground/70 border-transparent hover:text-foreground hover:border-primary/60'
           }`}
         >
           {link.label}
-          {/* underline indicator */}
-          <span
-            class={`pointer-events-none absolute left-0 right-0 -bottom-0.5 h-[2px] rounded-full bg-primary transition-opacity ${
-              isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-            }`}
-          />
         </a>
       );
     })

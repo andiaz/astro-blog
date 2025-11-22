@@ -7,19 +7,19 @@ const skills = [
     name: 'Skills',
     icon: '🎯',
     tools: [
-      'User research',
       'UX strategy',
-      'Information architecture',
-      'UI Design',
-      'Prototyping',
-      'Usability testing',
+      'User research',
       'Accessibility',
+      'Information architecture',
+      'Prototyping',
+      'UI Design',
+      'Usability testing',
     ],
   },
   {
     name: 'Tools',
     icon: '🧰',
-    tools: ['Figma', 'Adobe XD', 'Zeplin'],
+    tools: ['Figma', 'Zeplin', 'Obsidian', 'Flowmapp', 'Whimsical', 'Adobe XD'],
   },
   {
     name: 'Development',
@@ -117,53 +117,6 @@ import profileImage from '../images/andreas-2.jpeg';
     </div>
   </section>
 
-  {/* Featured Content - Music Production */}
-  <section class="mb-20 relative">
-    <div class="relative">
-      <h2 class="text-3xl font-semibold tracking-tight border-b pb-2 mb-8">
-        Music Production
-      </h2>
-      <div class="grid gap-8 md:grid-cols-2">
-        <div>
-          <p class="text-xl font-medium mb-4">
-            Producer of Melodic Progressive House & Trance
-          </p>
-          <p class="text-muted-foreground">
-            My music journey began in 2012 with FL Studio, diving deep into the
-            world of electronic music production. I've focused on progressive
-            house and trance, the genres that first captured my imagination in
-            electronic music.
-          </p>
-          <p class="text-muted-foreground mt-4">
-            Over the years, I've had the privilege of working with various
-            record labels, each collaboration adding to my growth as a producer.
-          </p>
-        </div>
-        <div class="space-y-6">
-          <h3 class="text-xl font-medium">Featured Labels</h3>
-          <div class="grid grid-cols-2 gap-3">
-            {
-              labels.map((label) => (
-                <div class="px-4 py-2 bg-secondary/50 rounded-md text-sm hover:bg-secondary transition-colors">
-                  {label}
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-8">
-        <iframe
-          class="rounded-lg shadow-lg w-full max-w-3xl mx-auto"
-          src="https://www.youtube.com/embed/O-pXGPmUyaM"
-          height="315"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-      </div>
-    </div>
-  </section>
-
   {/* Skills & Interests */}
   <section class="mb-20">
     <h2 class="text-3xl font-semibold tracking-tight border-b pb-2 mb-12">
@@ -226,6 +179,53 @@ import profileImage from '../images/andreas-2.jpeg';
             ))
           }
         </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Featured Content - Music Production */}
+  <section class="mb-20 relative">
+    <div class="relative">
+      <h2 class="text-3xl font-semibold tracking-tight border-b pb-2 mb-8">
+        Music Production
+      </h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div>
+          <p class="text-xl font-medium mb-4">
+            Producer of Melodic Progressive House & Trance
+          </p>
+          <p class="text-muted-foreground">
+            My music journey began in 2012 with FL Studio, diving deep into the
+            world of electronic music production. I've focused on progressive
+            house and trance, the genres that first captured my imagination in
+            electronic music.
+          </p>
+          <p class="text-muted-foreground mt-4">
+            Over the years, I've had the privilege of working with various
+            record labels, each collaboration adding to my growth as a producer.
+          </p>
+        </div>
+        <div class="space-y-6">
+          <h3 class="text-xl font-medium">Featured Labels</h3>
+          <div class="grid grid-cols-2 gap-3">
+            {
+              labels.map((label) => (
+                <div class="px-4 py-2 bg-secondary/50 rounded-md text-sm flex items-center transition-colors">
+                  {label}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <iframe
+          class="rounded-lg shadow-lg w-full max-w-3xl mx-auto"
+          src="https://www.youtube.com/embed/O-pXGPmUyaM"
+          height="315"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
       </div>
     </div>
   </section>

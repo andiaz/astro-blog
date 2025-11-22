@@ -20,11 +20,11 @@ const { title, titleId = 'design-process', steps } = Astro.props;
 
   <nav aria-label={`${title} steps`} class="mt-6">
     <ol
-      class="relative flex flex-col gap-8 md:gap-12 md:flex-row md:items-start md:justify-between"
+      class="relative flex px-0 flex-col gap-8 md:gap-12 md:flex-row md:items-start md:justify-between"
     >
       {
         steps.map((step, index) => (
-          <li class="relative flex flex-col items-center text-center md:flex-1">
+          <li class="relative flex px-0 flex-col items-center text-center md:flex-1">
             <a
               href={`#${step.id}`}
               class="group flex flex-col items-center no-underline
